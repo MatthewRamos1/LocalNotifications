@@ -14,15 +14,16 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var notifications = [String]()
-    private let notificationCenter = UNUserNotificationCenter.current()
+    private let nCenter = UNUserNotificationCenter.current()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        checkForNotificationAuthorization()
     }
     
     private func checkForNotificationAuthorization() {
-        notificationCenter.getNotificationSettings { (settings) in
+        nCenter.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .authorized {
                 print("app is authorized for notifications")
             } else {
@@ -32,7 +33,17 @@ class NotificationsViewController: UIViewController {
     }
     
     private func requestNotificationPermissions() {
-        
+        nCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                print("\(error)")
+                return
+            }
+            if granted {
+                print("granted")
+            } else {
+                print("Denied")
+            }
+        }
     }
 
 
