@@ -55,11 +55,64 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nr0-n1-LHc"/>
+                    <navigationItem key="navigationItem" id="nr0-n1-LHc">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="6PG-s1-7Fg">
+                            <connections>
+                                <segue destination="HEO-LE-kLH" kind="presentation" id="lOx-Cw-FDg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.86956521739137" y="-132.58928571428572"/>
+        </scene>
+        <!--Create Notification View Controller-->
+        <scene sceneID="aJW-bb-Kdg">
+            <objects>
+                <viewController storyboardIdentifier="CreateNotificationViewController" id="aIe-Yb-HrY" customClass="CreateNotificationViewController" customModule="LocalNotifications" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R3C-XQ-Sit">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txF-ZF-bIY">
+                                <rect key="frame" x="20" y="76" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="H7g-f6-cyG">
+                                <rect key="frame" x="0.0" y="150" width="414" height="216"/>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="aIe-Yb-HrY" eventType="valueChanged" id="Mk4-S5-FFG"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="H7g-f6-cyG" firstAttribute="leading" secondItem="g9O-Qw-GT5" secondAttribute="leading" id="1fd-Nn-nAb"/>
+                            <constraint firstItem="txF-ZF-bIY" firstAttribute="leading" secondItem="g9O-Qw-GT5" secondAttribute="leading" constant="20" id="5DS-uK-iT9"/>
+                            <constraint firstItem="g9O-Qw-GT5" firstAttribute="trailing" secondItem="txF-ZF-bIY" secondAttribute="trailing" constant="20" id="Dc9-oW-lBX"/>
+                            <constraint firstItem="H7g-f6-cyG" firstAttribute="top" secondItem="txF-ZF-bIY" secondAttribute="bottom" constant="40" id="JKa-fB-Ndy"/>
+                            <constraint firstItem="H7g-f6-cyG" firstAttribute="trailing" secondItem="g9O-Qw-GT5" secondAttribute="trailing" id="UoE-qd-lbl"/>
+                            <constraint firstItem="txF-ZF-bIY" firstAttribute="top" secondItem="g9O-Qw-GT5" secondAttribute="top" constant="20" id="hlq-Ze-JUO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g9O-Qw-GT5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V89-AR-cTZ">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="35M-d1-Ios">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="aIe-Yb-HrY" id="eLo-3J-s3F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="H7g-f6-cyG" id="nIh-2M-0G9"/>
+                        <outlet property="titleTextField" destination="txF-ZF-bIY" id="uol-am-EqP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2JB-xp-N2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815.9420289855075" y="-899.33035714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uP9-UV-0Hd">
@@ -79,5 +132,26 @@
             </objects>
             <point key="canvasLocation" x="-49.275362318840585" y="-132.58928571428572"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WXY-7c-lvf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HEO-LE-kLH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="skN-wr-XiS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aIe-Yb-HrY" kind="relationship" relationship="rootViewController" id="JN1-v4-z4I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZL-ve-94B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="-899"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
